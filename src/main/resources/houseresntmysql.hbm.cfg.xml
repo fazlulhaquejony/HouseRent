@@ -12,28 +12,16 @@
         <property name="hibernate.check_nullability">false</property>
 
 
-        <!-- <property name="hibernate.connection.password">jotilpassword</property>
-            <property name="hibernate.connection.url">jdbc:mysql://swosti.net:3306/mcc</property>
-            <property name="hibernate.connection.username">root</property> <property
-            name="hibernate.default_catalog">mcc</property> -->
-        <!--
-                 <property name="hibernate.connection.password">jotilpassword321</property>
-                <property name="hibernate.connection.url">jdbc:mysql://swostidb.c6z7q4jhzoc7.ap-south-1.rds.amazonaws.com:3306/rrf1</property>
-                <property name="hibernate.connection.username">swostiaws</property>
-                <property name="hibernate.default_catalog">rrf</property>
-           -->
-
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+       <!-- <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>-->
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="hibernate.connection.username">mehedee</property>
-        <property name="hibernate.connection.password">123456</property>
-        <property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3306/house_rent?useLegacyDatetimeCode=false&amp;sessionVariables=sql_mode=''&amp;UseUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=Asia/Dhaka&amp;useSSL=false</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">1623</property>
+        <property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3306/house_rent</property>
 
         <property name="hibernate.transaction.coordinator_class">jdbc</property>
         <property name="hibernate.current_session_context_class">thread</property>
         <property name="hibernate.search.autoregister_listeners">false</property>
         <property name="hibernate.show_sql">true</property>
-       <!-- <property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
--->
+
     </session-factory>
 </hibernate-configuration>

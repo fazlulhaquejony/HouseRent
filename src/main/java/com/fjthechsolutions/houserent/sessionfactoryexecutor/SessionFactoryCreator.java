@@ -1,46 +1,33 @@
 package com.fjthechsolutions.houserent.sessionfactoryexecutor;
 
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
 
-
-
-import java.util.HashMap;
-import java.util.List;
-
-import static com.fjthechsolutions.houserent.sessionfactoryexecutor.AllClassLoader.getClasses;
 
 public class SessionFactoryCreator {
 
-    private static HashMap<String, SessionFactory> sessionFactoryExecutor = new HashMap<>();
+    private  SessionFactory sessionFactory;
 
-    private SessionFactoryCreator(String dataBase)
+    private  SessionFactoryCreator(String dataBase)
     {
-        if(sessionFactoryExecutor.get(dataBase)==null)
-        {
-         StandardServiceRegistry standardServiceRegistry = new StandardServiceRegistryBuilder().configure(dataBase + ".hbm.cfg.xml").build();
-            MetadataSources metadataSources = new MetadataSources(standardServiceRegistry);
+        System.out.println("hbm file==="+dataBase);
+       sessionFactory = new Configuration()
+                       .configure("" +
+                               dataBase+".hbm.cfg.xml").buildSessionFactory();
 
-            List<Class<?>> classes=  getClasses("com.fjthechsolutions.houserent");
-
-
-            for(Class<?> packegeClass : classes)
-             {
-                 metadataSources.addAnnotatedClass(packegeClass);
-
-             }
-            sessionFactoryExecutor.put(dataBase,metadataSources.buildMetadata().buildSessionFactory());
-      }
 
     }
 
     public static SessionFactory getConnection(String db) {
-        if (sessionFactoryExecutor.get(db) == null) {
-            new SessionFactoryCreator(db);
+        System.out.println("hbm file1==="+db);
+
+        if (db.isEmpty()) {
+            //db = "houseresntmysql";
+            db = "houserentpostgre";
+            System.out.println("hbm file1==="+db);
+
         }
-        return sessionFactoryExecutor.get(db);
+        return new SessionFactoryCreator(db).sessionFactory;
     }
 
 }
